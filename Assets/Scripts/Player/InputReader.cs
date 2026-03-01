@@ -2,17 +2,20 @@ using UnityEngine;
 
 public class InputReader : MonoBehaviour
 {
-    public float DirectionX { get; private set; }
+    private const string Horizontal = "Horizontal";
+    private const KeyCode JumpButton = KeyCode.Space;
 
     private bool _isJump;
+    public float DirectionX { get; private set; }
+
 
     public bool GetIsJump() => GetBoolAsTrigger(ref _isJump);
 
     private void Update()
     {
-        DirectionX = Input.GetAxis("Horizontal");
+        DirectionX = Input.GetAxis(Horizontal);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(JumpButton))
             _isJump = true;
     }
     private bool GetBoolAsTrigger(ref bool value)

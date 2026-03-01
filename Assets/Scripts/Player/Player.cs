@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -6,6 +7,9 @@ public class Player : MonoBehaviour
     private Mover _mover;
     private Rotator _rotator;
     private PlayerAnimator _animator;
+    private TriggerCollector _triggerCollector;
+
+    public event Action<Coin> CoinCollected;
 
     private void Awake()
     {
@@ -13,9 +17,18 @@ public class Player : MonoBehaviour
         _mover = GetComponent<Mover>();
         _rotator = GetComponent<Rotator>();
         _animator = GetComponent<PlayerAnimator>();
+        _triggerCollector = GetComponent<TriggerCollector>();
     }
 
+    private void OnEnable()
+    {
+        _triggerCollector.CoinTouched += CollectCoin;
+    }
 
+    private void OnDisable()
+    {
+        _triggerCollector.CoinTouched -= CollectCoin;
+    }
 
     private void FixedUpdate()
     {
@@ -28,5 +41,10 @@ public class Player : MonoBehaviour
 
         if (_inputReader.GetIsJump())
             _mover.Jump();
+    }
+
+    private void CollectCoin(Coin coin)
+    {
+        CoinCollected?.Invoke(coin);
     }
 }

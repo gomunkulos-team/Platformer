@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class TriggerController : MonoBehaviour
+public class TriggerCollector : MonoBehaviour
 {
     public event Action<Coin> CoinTouched;
 

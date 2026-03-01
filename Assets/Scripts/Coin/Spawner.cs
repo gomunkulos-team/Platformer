@@ -5,9 +5,9 @@ using UnityEngine.Pool;
 
 public class Spawner : MonoBehaviour
 {
-    [SerializeField] Coin _coinPrefab;
-    [SerializeField] Transform[] _spawnPoints;
-    [SerializeField] TriggerController _triggerController;
+    [SerializeField] private Coin _coinPrefab;
+    [SerializeField] private Transform[] _spawnPoints;
+    [SerializeField] private Player _player;
 
     private float _timeForRespawnCoin = 3;
 
@@ -40,12 +40,12 @@ public class Spawner : MonoBehaviour
 
     private void OnEnable()
     {
-        _triggerController.CoinTouched += ReleaseCoin;
+        _player.CoinCollected += ReleaseCoin;
     }
 
     private void OnDisable()
     {
-        _triggerController.CoinTouched -= ReleaseCoin;
+        _player.CoinCollected -= ReleaseCoin;
     }
 
     private void SpawnCoin(Coin coin)
@@ -72,5 +72,3 @@ public class Spawner : MonoBehaviour
         StartCoroutine(WaitTime());
     }
 }
-
-

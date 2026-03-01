@@ -1057,6 +1057,9 @@ GameObject:
   - component: {fileID: 1852066988}
   - component: {fileID: 1852066987}
   - component: {fileID: 1852066989}
+  - component: {fileID: 1852066992}
+  - component: {fileID: 1852066991}
+  - component: {fileID: 1852066990}
   m_Layer: 0
   m_Name: Char_Skeletone
   m_TagString: Untagged
@@ -1217,7 +1220,44 @@ MonoBehaviour:
   _waypoints:
   - {fileID: 1563007025}
   - {fileID: 306163922}
-  _speed: 2
+--- !u!114 &1852066990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852066983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eafc76cec60a5d4795991a155847028, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy
+--- !u!114 &1852066991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852066983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7b0ee95231b6e2498d9d53359b626e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Mover
+  _jumpHight: 3
+  _moveSpeed: 3
+--- !u!114 &1852066992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1852066983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17571a041474c40459be7ed22e573434, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Rotator
 --- !u!1 &1858585840
 GameObject:
   m_ObjectHideFlags: 0
@@ -2558,7 +2598,7 @@ MonoBehaviour:
   _spawnPoints:
   - {fileID: 1858585841}
   - {fileID: 1054707090}
-  _triggerController: {fileID: 670684605}
+  _player: {fileID: 670684604}
 --- !u!4 &2020000250
 Transform:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class Mover : MonoBehaviour
 
     public float Speed { get; private set; }
 
-    private void Start()
+    private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         Speed = _rigidbody.linearVelocityX;

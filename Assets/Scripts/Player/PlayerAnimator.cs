@@ -3,8 +3,8 @@ using UnityEngine.UIElements;
 
 public class PlayerAnimator : MonoBehaviour
 {
-    private Animator _animator;
     private readonly int Speed = Animator.StringToHash(nameof(Speed));
+    private Animator _animator;
 
     private void Start()
     {
