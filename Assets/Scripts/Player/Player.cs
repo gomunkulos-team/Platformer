@@ -9,8 +9,6 @@ public class Player : MonoBehaviour
     private PlayerAnimator _animator;
     private TriggerCollector _triggerCollector;
 
-    public event Action<Coin> CoinCollected;
-
     private void Awake()
     {
         _inputReader = GetComponent<InputReader>();
@@ -45,6 +43,6 @@ public class Player : MonoBehaviour
 
     private void CollectCoin(Coin coin)
     {
-        CoinCollected?.Invoke(coin);
+        coin.Collect();
     }
 }

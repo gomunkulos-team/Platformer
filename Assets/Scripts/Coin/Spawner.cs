@@ -7,7 +7,6 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private Coin _coinPrefab;
     [SerializeField] private Transform[] _spawnPoints;
-    [SerializeField] private Player _player;
 
     private float _timeForRespawnCoin = 3;
 
@@ -38,18 +37,9 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-        _player.CoinCollected += ReleaseCoin;
-    }
-
-    private void OnDisable()
-    {
-        _player.CoinCollected -= ReleaseCoin;
-    }
-
     private void SpawnCoin(Coin coin)
     {
+        coin.Collected += ReleaseCoin;
         coin.transform.position = _spawnPointList.Dequeue();
         coin.gameObject.SetActive(true);
     }
@@ -68,6 +58,7 @@ public class Spawner : MonoBehaviour
     private void ReleaseCoin(Coin coin)
     {
         _spawnPointList.Enqueue(coin.transform.position);
+        coin.Collected -= ReleaseCoin;
         _pool.Release(coin);
         StartCoroutine(WaitTime());
     }
